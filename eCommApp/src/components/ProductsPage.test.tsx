@@ -18,10 +18,14 @@ const products = [
 ];
 
 const addToCart = vi.fn();
-const renderProducts = () => render(
-    <CartContext.Provider value={{ cartItems: [], addToCart, clearCart: vi.fn() }}>
+const renderProducts = ({ withProvider = true } = {}) => render(
+    withProvider ? (
+        <CartContext.Provider value={{ cartItems: [], addToCart, clearCart: vi.fn() }}>
+            <ProductsPage />
+        </CartContext.Provider>
+    ) : (
         <ProductsPage />
-    </CartContext.Provider>
+    )
 );
 
 describe('ProductsPage', () => {
@@ -38,6 +42,10 @@ describe('ProductsPage', () => {
     afterEach(() => {
         vi.unstubAllGlobals();
         vi.clearAllMocks();
+    });
+
+    it('throws when rendered without a CartContext provider', () => {
+        expect(() => renderProducts({ withProvider: false })).toThrow('CartContext must be used within a CartProvider');
     });
 
     it('shows a loading state before products finish loading', () => {
