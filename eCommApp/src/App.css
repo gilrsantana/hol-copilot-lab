@@ -25,18 +25,33 @@
   justify-content: center;
 }
 
-.app-header nav a {
+.app-header nav a,
+.app-header nav > button {
   color: white;
+  background: transparent;
+  border: 0;
   text-decoration: none;
   font-weight: 500;
+  font: inherit;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-.app-header nav a:hover {
+.app-header nav a:hover,
+.app-header nav > button:hover {
   background: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
+}
+
+.app-header nav a button {
+  color: inherit;
+  background: transparent;
+  border: 0;
+  font: inherit;
+  padding: 0;
+  cursor: pointer;
 }
 
 .main-content {
@@ -99,6 +114,72 @@
   padding: 1rem;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   color: white;
+  text-align: center;
+}
+
+.contact-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(20, 16, 45, 0.65);
+}
+
+.contact-modal {
+  width: min(100%, 32rem);
+  padding: 2rem;
+  border-radius: 1rem;
+  background: white;
+  color: #2c2c3a;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
+}
+
+.contact-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.contact-modal h2 {
+  color: #4d3f9d;
+}
+
+.contact-modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.contact-modal input,
+.contact-modal textarea {
+  width: 100%;
+  padding: 0.65rem;
+  border: 1px solid #c8c6d8;
+  border-radius: 0.35rem;
+  font: inherit;
+}
+
+.contact-modal textarea {
+  min-height: 7rem;
+  resize: vertical;
+}
+
+.contact-modal form button,
+.contact-confirmation button {
+  margin-top: 0.75rem;
+  padding: 0.65rem 1rem;
+  border: 0;
+  border-radius: 0.35rem;
+  background: #4d3f9d;
+  color: white;
+  cursor: pointer;
+}
+
+.contact-confirmation {
   text-align: center;
 }
 
